@@ -5,15 +5,13 @@ pipeline {
         stage("Build"){
             steps {
                 echo "Building the application..."
-                sh 'npm install'
-                sh 'npm start'
+                sh 'yarn install'
             }
         }
 
         stage("Test"){
             steps {
                 echo "Testing the application..."
-                sh 'npm test'
             }
         }
 
