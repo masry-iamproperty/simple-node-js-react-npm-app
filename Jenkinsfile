@@ -1,23 +1,14 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim'
+            args '-p 3000:3000'
+        }
+    }
     stages {
-        stage("Build"){
+        stage('Build') {
             steps {
-                echo "Building the application..."
-                sh 'yarn install'
-            }
-        }
-
-        stage("Test"){
-            steps {
-                echo "Testing the application..."
-            }
-        }
-
-        stage("Deploy"){
-            steps {
-                echo "Deploying the application..."
+                sh 'npm install'
             }
         }
     }
